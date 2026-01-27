@@ -1,12 +1,17 @@
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
 public class Kund {
     // Namn personummer fartyg och plats
     // Getter and setters
     // Static ArrayList alla kunder
+
+    //? SKA KLASSEN ELLER APPEN HANTERA FEL ? JUST NU KLASS
+        // ! TROR DET ÄR BÄTTRE I APP  
+
+    /************************************
+    ------------- VARIABLER -------------
+    *************************************/
 
     private String namn;
     private String personummer; // ÅÅÅÅMMDD
@@ -26,12 +31,12 @@ public class Kund {
     Kund(String namn, String personummer, Bokning fartyg, int platsIndex) {
 
         try {
-            LocalDate.parse(personummer, DateTimeFormatter.BASIC_ISO_DATE); // DUBBLE CHECK //
-            if (namn == null || namn.trim().isEmpty())
+            LocalDate.parse(personummer, DateTimeFormatter.BASIC_ISO_DATE); // Hitta på ett sätt at kasta egen Exception
+            if (namn == null || namn.isBlank())
                 throw new IllegalArgumentException("Namn får inte vara tomt");
-            // TODO: FUNGERAR SOM SKA?
             else if (platsIndex < 0 || platsIndex > 20)
                 throw new IllegalArgumentException("Plats index finns inte på detta fartyg");
+            // Om allt lyckades lägg till i KundRegister
             else {
                 this.namn = namn;
                 this.personummer = personummer;
@@ -42,7 +47,50 @@ public class Kund {
         } catch (Exception e) {
             IO.println("FEL: " + e.getMessage());
         }
+    }
 
+    /************************************
+    --------- GETTERS O SETTERS ---------
+    *************************************/
+
+    public String getNamn() {
+        return namn;
+    }
+
+    public Bokning getFartyg() {
+        return fartyg;
+    }
+
+    public String getPersonummer() {
+        return personummer;
+    }
+
+    public int getPlatsIndex() {
+        return platsIndex;
+    }
+
+
+// SE TILL ATT ALLA SETTERS BEHÖVS 
+    public void setFartyg(Bokning fartyg) {
+        this.fartyg = fartyg;
+    }
+
+    public void setNamn(String namn){
+        try {
+            if(namn == null || namn.isBlank()) throw new IllegalArgumentException ("Namn får inte vara tomt");
+            else this.namn = namn;
+        } catch (Exception e) {
+            IO.println("FEL: " + e.getMessage());
+        }
+    }
+
+    public void setPlatsIndex(int platsIndex) {
+        try {
+            if(platsIndex < 0 || platsIndex > 20) throw new IllegalArgumentException("PlatsIndexet finns inte på detta fartyg");
+            else this.platsIndex = platsIndex;
+        } catch (Exception e) {
+            IO.println("FEL: " + e.getMessage());
+        }
     }
 
     // TODO Skriv bättre toString()
