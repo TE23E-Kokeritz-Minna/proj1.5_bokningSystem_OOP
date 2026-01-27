@@ -25,6 +25,11 @@ void main(){
 /// FLYG - 50 passagerar, första klass normal priser, hela menyn 
 /// Tåg - 100 passagerare, kabin sitt priser, hela menyn 
 
+    Buss bussTest = new Buss();
+
+    Kund k1 = new Kund();
+    Kund k2 = new Kund("Jim" ,"20031224", bussTest, 0);
+
 
 
     System.out.println("Hello, World!");
