@@ -15,7 +15,7 @@ public class Kund {
 
     private String namn;
     private String personummer; // ÅÅÅÅMMDD
-    private Bokning fartyg; // FLEXIBELT
+    private Fartyg fartyg; // FLEXIBELT
     private int platsIndex;
 
     Kund() {
@@ -28,7 +28,7 @@ public class Kund {
 
     }
 
-    Kund(String namn, String personummer, Bokning fartyg, int platsIndex) {
+    Kund(String namn, String personummer, Fartyg fartyg, int platsIndex) {
 
         try {
             LocalDate.parse(personummer, DateTimeFormatter.BASIC_ISO_DATE); // Hitta på ett sätt at kasta egen Exception
@@ -57,7 +57,7 @@ public class Kund {
         return namn;
     }
 
-    public Bokning getFartyg() {
+    public Fartyg getFartyg() {
         return fartyg;
     }
 
@@ -71,7 +71,7 @@ public class Kund {
 
 
 // SE TILL ATT ALLA SETTERS BEHÖVS 
-    public void setFartyg(Bokning fartyg) {
+    public void setFartyg(Fartyg fartyg) {
         this.fartyg = fartyg;
     }
 
