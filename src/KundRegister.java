@@ -7,7 +7,7 @@ public class KundRegister {
     static{
         allaKunder =  new ArrayList<>();
     }
-
+    
     public static void läggTill(Kund kund){
         allaKunder.add(kund);
         IO.println(kund + " har laggts till ");
