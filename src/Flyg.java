@@ -1,4 +1,4 @@
-public class Flyg extends Fartyg {
+public class Flyg extends Fordon {
 
     Flyg() {
         super(699.99, 90000, 50);
@@ -16,5 +16,10 @@ public class Flyg extends Fartyg {
                 IO.println("FEL: " + e.getMessage());
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "FLYG";
     }
 }

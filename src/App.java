@@ -30,7 +30,11 @@ void main(){
     Kund k1 = new Kund();
     Kund k2 = new Kund("Jim" ,"20031224", bussTest, 0);
 
-
+    IO.println(k2 + " <- k2 || k1 -> " + k1);
 
     System.out.println("Hello, World!");
+
+    Bokning.bokaTest(k2, bussTest);
+    Bokning.visaPlatser(bussTest);
+
 }

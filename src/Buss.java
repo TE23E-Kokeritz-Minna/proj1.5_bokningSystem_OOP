@@ -1,10 +1,10 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Buss extends Fartyg{
+public class Buss extends Fordon{
 
     Buss(){
-        super(149.99, 299.99, 50);
+        super(149.99, 299.99, 20);
     }
 
     public double getPris(String personummer){
@@ -13,6 +13,11 @@ public class Buss extends Fartyg{
         LocalDate pnr = LocalDate.parse(personummer, DateTimeFormatter.BASIC_ISO_DATE); // KAN KRASHA 
         if((LocalDate.now().getYear() - pnr.getYear()) > 18) return pris1;
         else return pris2;
+    }
+
+    @Override
+    public String toString() {
+        return "BUSS";
     }
     
 }

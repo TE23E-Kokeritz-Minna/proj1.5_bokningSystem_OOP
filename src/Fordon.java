@@ -1,4 +1,4 @@
-public abstract class Fartyg {
+public abstract class Fordon {
 
     // priser olika
     // antal passagerar
@@ -9,7 +9,7 @@ public abstract class Fartyg {
 
     Kund[] kunder;
 
-    Fartyg(double pris1, double pris2, int antalKunder){
+    Fordon(double pris1, double pris2, int antalKunder){
         this.pris1 = pris1;
         this.pris2 = pris2;
         kunder = new Kund[antalKunder];
@@ -19,9 +19,17 @@ public abstract class Fartyg {
         return kunder;
     }
 
+
+    // THINGS WILL GET WEIRID 
+    public void läggTillIKunder(Kund kund, int index){
+        kunder[index] = kund;
+    }
+
     // stoppa in hela kunden? Tror inte det fungerar
     public double getPris(){
         return pris1;
     }
-    
+
+    @Override
+    public abstract String toString();
 }

@@ -1,9 +1,9 @@
-public class Train extends Fartyg{
-    Train(){
+public class Tåg extends Fordon{
+    Tåg(){
         super(195.99, 999.99, 100);
     }
-    
-    //TODO BASED on position in train 
+
+    //TODO BASED on position in Tåg 
     @Override
     public double getPris() {
         while (true) {
@@ -17,5 +17,8 @@ public class Train extends Fartyg{
             }
         }
     }
-
+    @Override
+    public String toString() {
+        return "TÅG";
+    }
 }
