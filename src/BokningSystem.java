@@ -1,7 +1,10 @@
+import java.io.Console;
 import java.time.LocalDate;
 
 public class BokningSystem {
     // Static?
+
+    // hanterar logiken 
 
     // hanterar menyn
     /*
@@ -68,17 +71,39 @@ public class BokningSystem {
 
     }
     // 
-
+/* 
     static public void bokaTest(Kund kund, Fordon fordon){
         IO.println();
         fordon.läggTillIKunder(kund, kund.getPlatsIndex());;
         IO.println("Kunden: " + kund + " har lagts till på " + fordon);
-    }
+    } */
 
     static public void visaPlatser(Fordon fordon){
         if(fordon instanceof Buss){
 
             String display = "";
+            for (int i = 0; i < fordon.antalPlatser; i++) {
+      /*           int kundPlatsIndex = fordon.anta[i].getPlatsIndex();
+                if(kundPlatsIndex == -1 && kundPlatsIndex < 10) display += "[0" + (i + 1) + "]";
+                else if(kundPlatsIndex == -1 && kundPlatsIndex < 10) display += "[" + (i + 1) + "]";
+                else display += "[XX]"; */
+            }
+            IO.println(display);
+       /*      for (int row=0; row < 5; row++) {
+               // printf(null, "\t[%2s][%2s]   [%2s][%2s]", plats[row*4],plats[row*4+1]plats[row*4+2]plats[row*4+3] )
+            } */
+            IO.println("""
+                    [XX][02]   [03][04]
+                    [05][06]   [07][08]
+                    [09][10]   [11][12]
+                    [13][14]   [15][16]
+                    [17][18]   [19][20]
+                    """);
+        }
+    }
+
+
+    /*      String display = "";
             for (int i = 0; i < fordon.getKunder().length; i++) {
                 int kundPlatsIndex = fordon.getKunder()[i].getPlatsIndex();
                 if(kundPlatsIndex == -1 && kundPlatsIndex < 10) display += "[0" + (i + 1) + "]";
@@ -92,11 +117,7 @@ public class BokningSystem {
                     [09][10]   [11][12]
                     [13][14]   [15][16]
                     [17][18]   [19][20]
-                    """);
-        }
-
-    }
-    
+                    """); */
 
     /// - - BOKA - - ///
     /// Välj fordon
