@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 
 public class KundRegister {
-    // inkluderar alla kunder kanske metoder för att hitta dem
-    static private  ArrayList<Kund> allaKunder; // inte best practice
-
+    static private  ArrayList<Kund> allaKunder; 
+    
     KundRegister(){
         allaKunder =  new ArrayList<>();
     }

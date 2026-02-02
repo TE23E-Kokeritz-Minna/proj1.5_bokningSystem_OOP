@@ -1,0 +1,33 @@
+Anteckningar
+
+public abstract class Fordon 
+    double pris1;
+    double pris2;
+    id 
+
+    //Kund[] kunder;
+
+FordonRegister 
+     private  ArrayList<Fordon> allaFordon; 
+
+
+public class BokningSystem 
+    meny
+
+BokningRegister
+    listaBokning    
+
+Bokning
+    fordons id och kundPersonnummer och platsIndex
+
+public class KundRegister 
+    // inkluderar alla kunder kanske metoder för att hitta dem
+    private  ArrayList<Kund> allaKunder; // inte best practice
+
+public class Kund
+
+    private String namn;
+    private String personummer; // ÅÅÅÅMMDD
+    //private Fordon fordon; 
+    //private int platsIndex;
+

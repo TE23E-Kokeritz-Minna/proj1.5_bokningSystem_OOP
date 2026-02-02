@@ -1,9 +1,10 @@
-public class BokningsRegister {
-    // LISTA på alla bokningar
-    private  ArrayList<Bokning> allaBokningar; // inte best practice
+import java.util.ArrayList;
 
-    BokningRegister(){
-        allaBokningar =  new ArrayList<>();
+public class BokningsRegister {
+    private  ArrayList<Bokning> allaBokningar; 
+
+    BokningsRegister(){
+        allaBokningar =  new ArrayList<Bokning>();
     }
     
     public void läggTill(Bokning bokning){

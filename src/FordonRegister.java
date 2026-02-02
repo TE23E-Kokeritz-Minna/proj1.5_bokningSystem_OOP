@@ -1,7 +1,9 @@
-public class FordonRegister {
-    // lista på alla fordon 
+import java.util.ArrayList;
 
-    private  ArrayList<Fordon> allaFordon; // inte best practice
+public class FordonRegister {
+   
+
+    private  ArrayList<Fordon> allaFordon; 
 
     FordonRegister(){
         allaFordon =  new ArrayList<>();

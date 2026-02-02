@@ -1,35 +1,48 @@
 public abstract class Fordon {
 
-    // priser olika
-    // antal passagerar
-    //  // array med alla passagerar på fartygen
-
-    //Array med platser sträng: XX taget annars 1-antalplatser BokningSystemet ser till att uppdatera listan.
-
     double pris1;
     double pris2;
 
-    int antalPlatser;
+    String[] platser;
+    // Ger Fordonet information om vilka platser som är fyllda.
+    // Innehåller alla platser 1-antal platser och en metod som ersätter en sagd
+    // plats till XX
 
-    ///Kund[] kunder;
-
-    Fordon(double pris1, double pris2, int antalKunder){
+    Fordon(double pris1, double pris2, int antalKunder) {
         this.pris1 = pris1;
         this.pris2 = pris2;
-        //kunder = new Kund[antalKunder];
-        antalPlatser = antalKunder;
+        platser = new String[antalKunder];
+
+        for (int i = 0; i < platser.length; i++) {
+            platser[i] = Integer.toString(i+1);
+        }
     }
 
-
-    // THINGS WILL GET WEIRID 
-/*     public void läggTillIKunder(Kund kund, int index){
-        kunder[index] = kund;
+    public void skrivUtPlatserTEST(){
+        for (int i = 0; i < platser.length; i++) {
+            IO.println(platser[i]);
+        }
     }
- */
-    // stoppa in hela kunden? Tror inte det fungerar
-    public double getPris(){
+
+    public double getPris() {
         return pris1;
     }
+
+    public void setPlats(int platsIndex, boolean bokad) {
+        try {
+            if (platsIndex < 0 || platsIndex + 1 > platser.length)
+                throw new IllegalArgumentException("platsIndex finns inte på fordonet");
+            else {
+                if (bokad == true)
+                    platser[platsIndex] = "XX";
+                else
+                    platser[platsIndex] = String.valueOf(platsIndex + 1);
+            }
+        } catch (Exception e) {
+            IO.println("FEL: " + e.getMessage());
+        }
+    }
+
 
     @Override
     public abstract String toString();

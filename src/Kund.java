@@ -2,37 +2,26 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Kund {
-    // Namn personummer fordon och plats
-    // Getter and setters
-    // Static ArrayList alla kunder
-
-    //? SKA KLASSEN ELLER APPEN HANTERA FEL ? JUST NU KLASS
-        // ! TROR DET ÄR BÄTTRE I APP  
-
+    
     /************************************
     ------------- VARIABLER -------------
     *************************************/
 
     private String namn;
     private String personummer; // ÅÅÅÅMMDD
-    //private Fordon fordon; // FLEXIBELT
-    //private int platsIndex;
-
+   
     Kund() {
         namn = "okänt";
         personummer = "00000000";
-        // lägg till i kundregister?
         KundRegister.läggTill(this);
-
     }
 
     Kund(String namn, String personummer) {
 
         try {
-            LocalDate.parse(personummer, DateTimeFormatter.BASIC_ISO_DATE); // Hitta på ett sätt at kasta egen Exception
+            LocalDate.parse(personummer, DateTimeFormatter.BASIC_ISO_DATE); 
             if (namn == null || namn.isBlank())
                 throw new IllegalArgumentException("Namn får inte vara tomt");
-            // Om allt lyckades lägg till i KundRegister
             else {
                 this.namn = namn;
                 this.personummer = personummer;
@@ -56,8 +45,6 @@ public class Kund {
         return personummer;
     }
 
-// SE TILL ATT ALLA SETTERS BEHÖVS 
-
     public void setNamn(String namn){
         try {
             if(namn == null || namn.isBlank()) throw new IllegalArgumentException ("Namn får inte vara tomt");
@@ -68,7 +55,7 @@ public class Kund {
     }
 
 
-    // TODO Skriv bättre toString()
+// TODO Skriv bättre toString()
     @Override
     public String toString() {
         return "namn: " + namn + " pnr: " + personummer;
