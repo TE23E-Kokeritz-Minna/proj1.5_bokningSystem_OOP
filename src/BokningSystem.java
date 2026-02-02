@@ -61,14 +61,19 @@ public class BokningSystem {
 
         if (fordon instanceof Buss) {
             IO.println("DEN KOM HIT ");
-             for(int row = 0; row < 5; row++){                
-                System.out.printf("\t[%02s][%02s]   [%02s][%02s]\n", fordon.platser[row*4] , fordon.platser[row*4 +1], fordon.platser[row*4+2], fordon.platser[row*4+3]);
+             for(int row = 0; row < 5; row++){    
+                String p1 = String.format("%2s",fordon.platser[row*4]);
+                String p2 = String.format("%2s",fordon.platser[row*4+1]);
+                String p3 = String.format("%2s",fordon.platser[row*4+2]);
+                String p4 = String.format("%2s",fordon.platser[row*4+3]);
+                
+                System.out.printf("\t[%s][%2s]   [%2s][%2s]\n",p1.replace(' ', '0'),p2.replace(' ', '0'),p3.replace(' ', '0'), p4.replace(' ', '0'));
             } 
         }
 
         else if(fordon instanceof Flyg){
               for(int row = 0; row < 9; row++){                
-                System.out.printf("\t[%02s][%02s]   [%02s][%02s]\n", fordon.platser[row*4] , fordon.platser[row*4 +1], fordon.platser[row*4+2], fordon.platser[row*4+3]);
+                System.out.printf("\t[%2s][%2s]   [%2s][%2s]\n", fordon.platser[row*4] , fordon.platser[row*4 +1], fordon.platser[row*4+2], fordon.platser[row*4+3]);
             }
         }
     }

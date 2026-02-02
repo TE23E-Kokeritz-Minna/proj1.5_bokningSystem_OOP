@@ -9,6 +9,6 @@ void main(){
 
     bussTest.skrivUtPlatserTEST();
 
-//    BokningSystem.visaPlatser(bussTest);
+    BokningSystem.visaPlatser(bussTest);
 
 }
