@@ -32,11 +32,12 @@ public class BokningSystem {
                     // BOKA
                     IO.println("--- Boka en plats ---");
                     /// Välj fordonstyp
-                    Fordon valtFordon = väljFordon();
-                   
-                    //TODO
-                    // Skriv in personummer och namn kolla att de är gilitga skapa
-                    /// bokning ändrar i Fordon
+                    Fordon valtFordon = väljFordonsTyp();
+
+                    // TODOhantera om fordon inte finns
+                    // Skriv in personummer och namn kolla att de är gilitga
+                    // skapa bokning
+                    // ändrar i Fordon
 
                     break;
 
@@ -66,49 +67,68 @@ public class BokningSystem {
 
     }
 
-    private static Fordon väljFordon(){
-        Fordon valtFordon;
+    private static Fordon väljFordonsTyp() {
+        Fordon valtFordon = null;
 
-         // loopa igenom alla av den typen,
-                    // om det inte finns några, be om nytt fordon
-                        //if(lista.isNull eller lista.isEmpty)
-             boolean giltigtFordon = false;
-                    while (!giltigtFordon) {
-                        String svar = IO.readln("Boka på Flyg/Buss/Tåg: ");
-                        try {
-                            switch (svar.toLowerCase().trim()) {
-                                case "flyg":
-                                    /*
-                                    TODO Välj mellan de specifika fordonen. Try catch integer förmodligen
-                                        TODO Be om ny Fordonstyp om "alla" är tom 
+        // loopa igenom alla av den typen,
+        // om det inte finns några, be om nytt fordon
+        // if(lista.isNull eller lista.isEmpty)
+        boolean giltigtFordon = false;
+        while (!giltigtFordon) {
+            String svar = IO.readln("Boka på Flyg/Buss/Tåg: ");
+            try {
+                switch (svar.toLowerCase().trim()) {
+                    case "flyg":
+                        /*
+                         * TODO Välj mellan de specifika fordonen. Try catch integer förmodligen
+                         * TODO Be om ny Fordonstyp om "alla" är tom
+                         */
+                        // ? Flytta till specifik metod
+                        valtFordon = väljFordon(Flyg.class);
+                        giltigtFordon = true;
+                        break;
 
-                                    */
-                                    //? Flytta till specifik metod
-                                    ArrayList<Fordon> alla = FordonRegister.getAllaTyp(Flyg.class);
-                                    if(alla.isEmpty()) IO.println("vi har inga av denna typ");
-                                    for (int i = 0; i < alla.size(); i++) {
-                                        IO.println((i+1) + ". " + alla.get(i).ID);
-                                    }
-                                    String indexString = IO.readln("Välj fordon ");
-                                    giltigtFordon = true;
-                                    break;
+                    case "buss":
+                        valtFordon = väljFordon(Buss.class);
+                        giltigtFordon = true;
+                        break;
+                    case "tåg":
+                        valtFordon = väljFordon(Tåg.class);
+                        giltigtFordon = true;
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Ogiltigt fordons alternativ");
+                }
+            } catch (Exception e) {
+                IO.println("FEL: " + e.getMessage());
+            }
+        }
+        return valtFordon;
+    }
 
-                                case "buss":
-                                    giltigtFordon = true;
-                                    break;
-                                case "tåg":
-                                    giltigtFordon = true;
-                                    break;
-                                default:
-                                    throw new IllegalArgumentException("Ogiltigt fordons alternativ");
-                            }
-                        } catch (Exception e) {
-                            IO.println("FEL: " + e.getMessage());
-                        }
-
-                    }
-
-        return new Buss("BUSSSSSSSSSS");
+    private static Fordon väljFordon(Class<?> typ) {
+        ArrayList<Fordon> alla = FordonRegister.getAllaTyp(typ);
+        if (alla.isEmpty()) {
+            IO.println("Inga Fordon finns av den typen");
+            return null;
+        } else {
+            for (int i = 0; i < alla.size(); i++) {
+                IO.println((i + 1) + ". " + alla.get(i).ID);
+            }
+            int fordonNr;
+            while (true) {
+                try {
+                    fordonNr = Integer.parseInt(IO.readln("Välj Fordon nr: "));
+                    if (fordonNr < 1 || fordonNr - 1 >= alla.size())
+                        throw new IndexOutOfBoundsException("Ogiltigt Index");
+                    else
+                        break;
+                } catch (Exception e) {
+                    IO.println("FEL: " + e.getMessage());
+                }
+            }
+            return alla.get(fordonNr - 1);
+        }
     }
 
     public static void visaPlatser(Fordon fordon) {
