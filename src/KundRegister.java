@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class KundRegister {
     static private  ArrayList<Kund> allaKunder; 
     
-    KundRegister(){
+    static{
         allaKunder =  new ArrayList<>();
     }
     
@@ -12,7 +12,7 @@ public class KundRegister {
         IO.println(kund + " har laggts till ");
     } 
 
-    public ArrayList<Kund> getAllaKunder() {
+    static public ArrayList<Kund> getAllaKunder() {
         return allaKunder;
     }
 }

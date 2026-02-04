@@ -17,7 +17,6 @@ public class Kund {
     }
 
     Kund(String namn, String personummer) {
-
         try {
             LocalDate.parse(personummer, DateTimeFormatter.BASIC_ISO_DATE); 
             if (namn == null || namn.isBlank())

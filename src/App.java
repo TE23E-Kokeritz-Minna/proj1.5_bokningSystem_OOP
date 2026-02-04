@@ -4,6 +4,7 @@ void main(){
     
     Buss bussTest = new Buss("MysterieBussen");
     Flyg flygTest = new Flyg("Falcon");
+    Flyg flygTest2 = new Flyg("Athena");
     Tåg tågTest = new Tåg("Thomas");
 
     bussTest.setPlats(0, true);
@@ -14,7 +15,9 @@ void main(){
     flygTest.setPlats(30, true);
     flygTest.setPlats(12, true);
     flygTest.setPlats(0, true);
-    BokningSystem.visaPlatser(bussTest);
-    BokningSystem.visaPlatser(flygTest);
-    BokningSystem.visaPlatser(tågTest);
+    //BokningSystem.visaPlatser(bussTest);
+    //BokningSystem.visaPlatser(flygTest);
+    //BokningSystem.visaPlatser(tågTest);
+
+    BokningSystem.Meny();
 }

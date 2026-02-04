@@ -20,6 +20,6 @@ public class Flyg extends Fordon {
 
     @Override
     public String toString() {
-        return "FLYG";
+        return "FLYG: " + ID;
     }
 }

@@ -15,7 +15,7 @@ public class Buss extends Fordon{
 
     @Override
     public String toString() {
-        return "BUSS";
+        return "BUSS: " + ID;
     }
     
 }

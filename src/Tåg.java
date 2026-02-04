@@ -19,6 +19,6 @@ public class Tåg extends Fordon{
     }
     @Override
     public String toString() {
-        return "TÅG";
+        return "TÅG: " +ID;
     }
 }

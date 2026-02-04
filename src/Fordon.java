@@ -18,6 +18,7 @@ public abstract class Fordon {
         for (int i = 0; i < platser.length; i++) {
             platser[i] = Integer.toString(i+1);
         }
+        FordonRegister.läggTill(this);
     }
 
     public void skrivUtPlatserTEST(){
