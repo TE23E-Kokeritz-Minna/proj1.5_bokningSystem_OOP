@@ -3,8 +3,8 @@ import java.time.format.DateTimeFormatter;
 
 public class Buss extends Fordon{
 
-    Buss(){
-        super(149.99, 299.99, 20);
+    Buss(String ID){
+        super(ID, 149.99, 299.99, 20);
     }
 
     public double getPris(String personummer){

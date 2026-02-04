@@ -1,6 +1,6 @@
 public class Tåg extends Fordon{
-    Tåg(){
-        super(195.99, 999.99, 100);
+    Tåg(String ID){
+        super(ID, 195.99, 999.99, 100);
     }
 
     //TODO BASED on position in Tåg 

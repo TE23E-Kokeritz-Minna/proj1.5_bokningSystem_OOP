@@ -1,7 +1,7 @@
 public class Flyg extends Fordon {
 
-    Flyg() {
-        super(699.99, 90000, 54);
+    Flyg(String ID) {
+        super(ID, 699.99, 90000, 54);
     }
 
     @Override
