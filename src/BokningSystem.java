@@ -1,5 +1,6 @@
 import java.io.Console;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class BokningSystem {
@@ -33,8 +34,41 @@ public class BokningSystem {
                     IO.println("--- Boka en plats ---");
                     /// Välj fordonstyp
                     Fordon valtFordon = väljFordonsTyp();
+                    int platsIndex;
+                    visaPlatser(valtFordon);
+                    while (true) {
+                        try {
+                            platsIndex = Integer.parseInt(IO.readln("Ange plats att boka: "))-1;
+                            if(platsIndex < 1 || platsIndex > valtFordon.getPlatser().length -1 ) throw new IllegalArgumentException("Det valda fordonet har inte den platsen");
+                            break;
+                        } catch (Exception e) {
+                            IO.println("FEL: " + e.getMessage());
+                        }
+                    }
+                        
+                    String personnummer;
+                    String namn;
+
+                    // ? Ändra så personummer och namn blir olika tryCatch ? // 
+                    while (true) {
+                        try {
+                            personnummer = IO.readln("Ange personummer: ");
+                            LocalDate.parse(personnummer, DateTimeFormatter.BASIC_ISO_DATE);
+                            namn = IO.readln("Ange namn: ");
+                            if (namn == null || namn.isBlank())
+                                throw new IllegalArgumentException("Namn får inte vara tomt");
+                            break;
+                        } catch (Exception e) {
+                            IO.println("FEL: " + e.getMessage());
+                        }
+                    }
+                    
+                    Kund kund = new Kund(namn, personnummer);
+                    new Bokning(kund, valtFordon, platsIndex);
+                    valtFordon.setPlats(platsIndex, true);
 
                     // TODOhantera om fordon inte finns
+                    // Ange gitligt platsindex
                     // Skriv in personummer och namn kolla att de är gilitga
                     // skapa bokning
                     // ändrar i Fordon
@@ -69,10 +103,7 @@ public class BokningSystem {
 
     private static Fordon väljFordonsTyp() {
         Fordon valtFordon = null;
-
-        // loopa igenom alla av den typen,
-        // om det inte finns några, be om nytt fordon
-        // if(lista.isNull eller lista.isEmpty)
+        
         boolean giltigtFordon = false;
         while (!giltigtFordon) {
             String svar = IO.readln("Boka på Flyg/Buss/Tåg: ");
@@ -83,7 +114,6 @@ public class BokningSystem {
                          * TODO Välj mellan de specifika fordonen. Try catch integer förmodligen
                          * TODO Be om ny Fordonstyp om "alla" är tom
                          */
-                        // ? Flytta till specifik metod
                         valtFordon = väljFordon(Flyg.class);
                         giltigtFordon = true;
                         break;

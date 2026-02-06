@@ -11,7 +11,6 @@ public class Bokning {
         this.kund = kund;
         this.fordon = fordon;
         this.platsIndex = platsIndex;
-
         BokningsRegister.läggTill(this);
     }
 }

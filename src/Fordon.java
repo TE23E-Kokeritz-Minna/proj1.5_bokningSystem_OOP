@@ -1,27 +1,27 @@
 public abstract class Fordon {
 
-    double pris1;
-    double pris2;
-    String ID;
+    protected double pris1;
+    protected double pris2;
+    protected String ID;
 
-    String[] platser;
+    protected String[] platser;
     // Ger Fordonet information om vilka platser som är fyllda.
     // Innehåller alla platser 1-antal platser och en metod som ersätter en sagd
     // plats till XX
 
-    Fordon(String ID ,double pris1, double pris2, int antalKunder) {
+    Fordon(String ID, double pris1, double pris2, int antalKunder) {
         this.ID = ID;
         this.pris1 = pris1;
         this.pris2 = pris2;
         platser = new String[antalKunder];
 
         for (int i = 0; i < platser.length; i++) {
-            platser[i] = Integer.toString(i+1);
+            platser[i] = Integer.toString(i + 1);
         }
         FordonRegister.läggTill(this);
     }
 
-    public void skrivUtPlatserTEST(){
+    public void skrivUtPlatserTEST() {
         for (int i = 0; i < platser.length; i++) {
             IO.println(platser[i]);
         }
@@ -30,6 +30,15 @@ public abstract class Fordon {
     public double getPris() {
         return pris1;
     }
+
+    public String getID() {
+        return ID;
+    }
+
+    public String[] getPlatser() {
+        return platser;
+    }
+    
 
     public void setPlats(int platsIndex, boolean bokad) {
         try {
@@ -45,7 +54,6 @@ public abstract class Fordon {
             IO.println("FEL: " + e.getMessage());
         }
     }
-
 
     @Override
     public abstract String toString();
