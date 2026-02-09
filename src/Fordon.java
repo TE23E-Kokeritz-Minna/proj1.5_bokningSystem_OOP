@@ -27,7 +27,7 @@ public abstract class Fordon {
         }
     }
 
-    public double getPris() {
+    public double getPris(Bokning bokning) {
         return pris1;
     }
 

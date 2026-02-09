@@ -19,7 +19,7 @@ public class BokningSystem {
                         5. Radera bokning - ange personnummer eller namn (TBC)
                         6. Stäng meny
                     """);
-            while (true) {
+            while (true) {  
                 try {
                     val = Integer.parseInt(IO.readln("Ange Alternativ (1-6): "));
                     break;
@@ -85,6 +85,14 @@ public class BokningSystem {
 
                 case 3:
                     // BERÄKNA VINST
+                    // loopa igenom alla bokningar i bokningsregister 
+                        // bokning.fordon.getpris(bokning )   
+                        double summa = 0;  
+                    for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
+                        summa += bokning.getFordon().getPris(bokning);
+                    }
+                    IO.println("Total vinsten är: " + summa + " kr");
+
                     break;
                 case 4:
                     // HITTA BOKNING

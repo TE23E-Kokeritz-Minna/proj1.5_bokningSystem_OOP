@@ -5,7 +5,7 @@ public class Tåg extends Fordon{
 
     //TODO BASED on position in Tåg 
     @Override
-    public double getPris() {
+    public double getPris(Bokning bokning) {
         while (true) {
             try {
                 String svar = IO.readln("Vill du ha första klass? (y/n)");

@@ -14,6 +14,16 @@ public class Bokning {
         BokningsRegister.läggTill(this);
     }
 
+    public Kund getKund() {
+        return kund;
+    }
+    public Fordon getFordon() {
+        return fordon;
+    }
+    public int getPlatsIndex() {
+        return platsIndex;
+    }
+
     @Override
     public String toString() {
         return kund + " " + fordon + " (" + (platsIndex +1) + ")";
