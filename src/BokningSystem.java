@@ -12,8 +12,8 @@ public class BokningSystem {
 
             IO.println("""
                         ---- Meny: ----
-                        1. Lägga till en passagerare - Välj Fordon (TBC)
-                        2. Leta Lediga platser - Välj Fordon (TBC)
+                        1. Lägga till en passagerare - Välj Fordon 
+                        2. Leta Lediga platser - Välj Fordon 
                         3. Beräkna vinst - Total vinst och Separat Vinst  (TBC)
                         4. Hitta bokning - ange personnummer eller namn (TBC)
                         5. Radera bokning - ange personnummer eller namn (TBC)
@@ -39,7 +39,8 @@ public class BokningSystem {
                     while (true) {
                         try {
                             platsIndex = Integer.parseInt(IO.readln("Ange plats att boka: "))-1;
-                            if(platsIndex < 1 || platsIndex > valtFordon.getPlatser().length -1 ) throw new IllegalArgumentException("Det valda fordonet har inte den platsen");
+                            if(platsIndex < 0 || platsIndex > valtFordon.getPlatser().length -1 ) throw new IllegalArgumentException("Det valda fordonet har inte den platsen");
+                            else if(valtFordon.getPlatser()[platsIndex] == "XX") throw new IllegalArgumentException("platsen är redan bokad");
                             break;
                         } catch (Exception e) {
                             IO.println("FEL: " + e.getMessage());
@@ -77,6 +78,9 @@ public class BokningSystem {
 
                 case 2:
                     // DISPLAY lediga platser
+                    IO.println("--- Visa plaster ---");
+                    Fordon valtFordon2 = väljFordonsTyp();
+                    visaPlatser(valtFordon2);
                     break;
 
                 case 3:

@@ -13,4 +13,9 @@ public class Bokning {
         this.platsIndex = platsIndex;
         BokningsRegister.läggTill(this);
     }
+
+    @Override
+    public String toString() {
+        return kund + " " + fordon + " (" + (platsIndex +1) + ")";
+    }
 }
