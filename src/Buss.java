@@ -7,20 +7,12 @@ public class Buss extends Fordon{
         super(ID, 149.99, 299.99, 20);
     }
 
-    
     @Override
     public double getPris(Bokning bokning) {
         LocalDate pnr = LocalDate.parse(bokning.getKund().getPersonummer(), DateTimeFormatter.BASIC_ISO_DATE); 
-        if((LocalDate.now().getYear() - pnr.getYear()) > 18) return pris1;
+        if((LocalDate.now().getYear() - pnr.getYear()) < 18) return pris1;
         else return pris2;
     }
-
-    /* @Override
-    public double getPris(bokning Bokning){
-        LocalDate pnr = LocalDate.parse(personummer, DateTimeFormatter.BASIC_ISO_DATE); 
-        if((LocalDate.now().getYear() - pnr.getYear()) > 18) return pris1;
-        else return pris2;
-    } */
 
     @Override
     public String toString() {

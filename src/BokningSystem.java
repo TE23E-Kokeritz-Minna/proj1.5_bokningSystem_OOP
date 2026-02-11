@@ -12,14 +12,14 @@ public class BokningSystem {
 
             IO.println("""
                         ---- Meny: ----
-                        1. Lägga till en passagerare - Välj Fordon 
-                        2. Leta Lediga platser - Välj Fordon 
+                        1. Lägga till en passagerare - Välj Fordon
+                        2. Leta Lediga platser - Välj Fordon
                         3. Beräkna vinst - Total vinst och Separat Vinst  (TBC)
                         4. Hitta bokning - ange personnummer eller namn (TBC)
                         5. Radera bokning - ange personnummer eller namn (TBC)
                         6. Stäng meny
                     """);
-            while (true) {  
+            while (true) {
                 try {
                     val = Integer.parseInt(IO.readln("Ange Alternativ (1-6): "));
                     break;
@@ -38,19 +38,21 @@ public class BokningSystem {
                     visaPlatser(valtFordon);
                     while (true) {
                         try {
-                            platsIndex = Integer.parseInt(IO.readln("Ange plats att boka: "))-1;
-                            if(platsIndex < 0 || platsIndex > valtFordon.getPlatser().length -1 ) throw new IllegalArgumentException("Det valda fordonet har inte den platsen");
-                            else if(valtFordon.getPlatser()[platsIndex] == "XX") throw new IllegalArgumentException("platsen är redan bokad");
+                            platsIndex = Integer.parseInt(IO.readln("Ange plats att boka: ")) - 1;
+                            if (platsIndex < 0 || platsIndex > valtFordon.getPlatser().length - 1)
+                                throw new IllegalArgumentException("Det valda fordonet har inte den platsen");
+                            else if (valtFordon.getPlatser()[platsIndex] == "XX")
+                                throw new IllegalArgumentException("platsen är redan bokad");
                             break;
                         } catch (Exception e) {
                             IO.println("FEL: " + e.getMessage());
                         }
                     }
-                        
+
                     String personnummer;
                     String namn;
 
-                    // ? Ändra så personummer och namn blir olika tryCatch ? // 
+                    // ? Ändra så personummer och namn blir olika tryCatch ? //
                     while (true) {
                         try {
                             personnummer = IO.readln("Ange personummer: ");
@@ -63,7 +65,7 @@ public class BokningSystem {
                             IO.println("FEL: " + e.getMessage());
                         }
                     }
-                    
+
                     Kund kund = new Kund(namn, personnummer);
                     new Bokning(kund, valtFordon, platsIndex);
                     valtFordon.setPlats(platsIndex, true);
@@ -85,13 +87,42 @@ public class BokningSystem {
 
                 case 3:
                     // BERÄKNA VINST
-                    // loopa igenom alla bokningar i bokningsregister 
-                        // bokning.fordon.getpris(bokning )   
-                        double summa = 0;  
+                    // loopa igenom alla bokningar i bokningsregister
+                    // bokning.fordon.getpris(bokning )
+                    IO.println("--- Beräkna Vinst ---");
+                    double summa = 0;
+                    try {
+                        String svar = IO.readln("Vill du beräkna total vinst eller specifik vinst (tot/spec): ");
+                        switch (svar.toLowerCase()) {
+                            case "tot":
+                                for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
+                                    summa += bokning.getFordon().getPris(bokning);
+
+                                    IO.println("summa: " + summa + " Bokning Kund: " + bokning.getKund() + " Bokning fordon: " + bokning.getFordon() + " Pris: " + bokning.getFordon().getPris(bokning));
+                                }
+                                summa = Math.floor(summa*100)/100;
+                                IO.println("Total vinsten är: " + summa + " kr");
+                                break;
+                            case "spec":
+                                Fordon valtFordon3 = väljFordonsTyp();
+                                for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
+                                    if(bokning.getFordon() == valtFordon3){
+                                        summa += bokning.getFordon().getPris(bokning);
+                                    } 
+                                }
+                                break;  
+                            default:
+                                throw new IllegalArgumentException("Ogiltigt Alternativ");
+                        }
+                    } catch (Exception e) {
+                        IO.println("FEL: " + e.getMessage());
+                    }
+
+                /*     double summa = 0;
                     for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
                         summa += bokning.getFordon().getPris(bokning);
                     }
-                    IO.println("Total vinsten är: " + summa + " kr");
+                    IO.println("Total vinsten är: " + summa + " kr"); */
 
                     break;
                 case 4:
@@ -115,7 +146,7 @@ public class BokningSystem {
 
     private static Fordon väljFordonsTyp() {
         Fordon valtFordon = null;
-        
+
         boolean giltigtFordon = false;
         while (!giltigtFordon) {
             String svar = IO.readln("Boka på Flyg/Buss/Tåg: ");

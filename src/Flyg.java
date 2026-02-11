@@ -1,16 +1,23 @@
 public class Flyg extends Fordon {
 
-    Flyg(String ID) {
+    // TODO DEN SKA INTE VARA HÄR 
+    private boolean förstaKlass;
+
+    Flyg(String ID, boolean förstaKlass) {
         super(ID, 699.99, 90000.0, 54);
+        this.förstaKlass = förstaKlass;
     }
 
     @Override
     public double getPris(Bokning bokning) {
-
-        //TODO FLYTTTA 
-        //? BOOLEAN FÖRSTA KLASS? 
+        // TODO FIXA
+        // TODO FLYTTTA
+        // ? BOOLEAN FÖRSTA KLASS?
         // DET HÄR SKA INTE VARA HÄR FRÅGA NÄR MAN SKAPAR BOKNINGEN ELLER NÅGOT
-        while (true) {
+        if(förstaKlass) return  pris2;
+        else return pris1;
+
+        /* while (true) {
             try {
                 String svar = IO.readln("Vill du ha första klass? (y/n): ");
                 if (svar.toLowerCase().equals("y")) {
@@ -23,7 +30,7 @@ public class Flyg extends Fordon {
             } catch (Exception e) {
                 IO.println("FEL: " + e.getMessage());
             }
-        }
+        } */
     }
 
     @Override
