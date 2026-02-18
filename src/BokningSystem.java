@@ -1,4 +1,3 @@
-import java.io.Console;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -98,19 +97,21 @@ public class BokningSystem {
                                 for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
                                     summa += bokning.getFordon().getPris(bokning);
 
-                                    IO.println("summa: " + summa + " Bokning Kund: " + bokning.getKund() + " Bokning fordon: " + bokning.getFordon() + " Pris: " + bokning.getFordon().getPris(bokning));
+                                    IO.println("summa: " + summa + " Bokning Kund: " + bokning.getKund()
+                                            + " Bokning fordon: " + bokning.getFordon() + " Pris: "
+                                            + bokning.getFordon().getPris(bokning));
                                 }
-                                summa = Math.floor(summa*100)/100;
+                                summa = Math.floor(summa * 100) / 100;
                                 IO.println("Total vinsten är: " + summa + " kr");
                                 break;
                             case "spec":
                                 Fordon valtFordon3 = väljFordonsTyp();
                                 for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
-                                    if(bokning.getFordon() == valtFordon3){
+                                    if (bokning.getFordon() == valtFordon3) {
                                         summa += bokning.getFordon().getPris(bokning);
-                                    } 
+                                    }
                                 }
-                                break;  
+                                break;
                             default:
                                 throw new IllegalArgumentException("Ogiltigt Alternativ");
                         }
@@ -118,11 +119,13 @@ public class BokningSystem {
                         IO.println("FEL: " + e.getMessage());
                     }
 
-                /*     double summa = 0;
-                    for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
-                        summa += bokning.getFordon().getPris(bokning);
-                    }
-                    IO.println("Total vinsten är: " + summa + " kr"); */
+                    /*
+                     * double summa = 0;
+                     * for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
+                     * summa += bokning.getFordon().getPris(bokning);
+                     * }
+                     * IO.println("Total vinsten är: " + summa + " kr");
+                     */
 
                     break;
                 case 4:
@@ -205,7 +208,6 @@ public class BokningSystem {
     }
 
     public static void visaPlatser(Fordon fordon) {
-
         if (fordon instanceof Buss) {
             IO.println("Bussen: " + fordon.ID);
             for (int row = 0; row < 5; row++) {
@@ -233,7 +235,30 @@ public class BokningSystem {
                         p3.replace(' ', '0'), p4.replace(' ', '0'), p5.replace(' ', '0'), p6.replace(' ', '0'));
             }
         } else if (fordon instanceof Tåg) {
-            IO.println("Det här är tåget " + fordon.ID + ", TBC on proper displays");
+            IO.println("Tåget: " + fordon.ID);
+            IO.println("=========== K A B I N E R ===========");
+            for (int row = 0; row < 6; row++) {
+                String p1 = String.format("%2s", fordon.platser[row * 4]);
+                String p2 = String.format("%2s", fordon.platser[row * 4 + 1]);
+                String p3 = String.format("%2s", fordon.platser[row * 4 + 2]);
+                String p4 = String.format("%2s", fordon.platser[row * 4 + 3]);
+
+                System.out.printf("\t[%s][%s]   [%s][%s]\n", p1.replace(' ', '0'), p2.replace(' ', '0'),
+                        p3.replace(' ', '0'), p4.replace(' ', '0'));
+                if ((row -1) % 2 == 0 && row !=5) 
+                    IO.println();
+            }
+            IO.println("=====================================");
+
+            for (int row = 6; row < 15; row++) {
+                String p1 = String.format("%2s", fordon.platser[row * 4]);
+                String p2 = String.format("%2s", fordon.platser[row * 4 + 1]);
+                String p3 = String.format("%2s", fordon.platser[row * 4 + 2]);
+                String p4 = String.format("%2s", fordon.platser[row * 4 + 3]);
+
+                System.out.printf("\t[%s][%s]   [%s][%s]\n", p1.replace(' ', '0'), p2.replace(' ', '0'),
+                        p3.replace(' ', '0'), p4.replace(' ', '0'));
+            }
         }
     }
 }

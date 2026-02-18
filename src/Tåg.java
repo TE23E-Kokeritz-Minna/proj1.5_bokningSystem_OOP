@@ -1,10 +1,7 @@
 public class Tåg extends Fordon {
-    //TODO DEN SKA INTE VARA HÄR 
-    private boolean förstaKlass;
 
-    Tåg(String ID, boolean förstaKlass) {
-        super(ID, 195.99, 999.99, 100);
-        this.förstaKlass = förstaKlass;
+    Tåg(String ID) {
+        super(ID, 195.99, 999.99, 60);
     }
 
     // TODO BASED on position in Tåg
@@ -12,8 +9,8 @@ public class Tåg extends Fordon {
     public double getPris(Bokning bokning) {
 
         // TODO FIXA
-        if(förstaKlass) return pris2;
-        else return pris1;
+         if(bokning.getPlatsIndex() == 1) return pris2;
+        else return pris1; 
       /*   while (true) {
             try {
                 String svar = IO.readln("Vill du ha första klass? (y/n): ");

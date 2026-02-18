@@ -19,8 +19,8 @@ void main() {
     Buss bussTest = new Buss("MysterieBussen");
     Flyg flygTest = new Flyg("Falcon", false);
     Flyg flygTest2 = new Flyg("Athena", true);
-    Tåg tågTest = new Tåg("Thomas",false);
-    Tåg tågTest2 = new Tåg("Polar express",true);
+    Tåg tågTest = new Tåg("Thomas");
+    Tåg tågTest2 = new Tåg("Polar express");
 
     Kund k1 = new Kund("Jim", "19530201");
     Kund k2 = new Kund("Elsa", "20231203");
@@ -50,6 +50,9 @@ void main() {
     flygTest.setPlats(12, true);
     flygTest.setPlats(0, true);
 
-    BokningSystem.Meny();
+    //BokningSystem.Meny();
 
+    BokningSystem.visaPlatser(tågTest2);
+    BokningSystem.visaPlatser(flygTest);
+    BokningSystem.visaPlatser(bussTest);
 }
