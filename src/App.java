@@ -2,14 +2,14 @@ void main() {
 
     /* 
         BUSS : 
-            > 18  - 149.99 
-            < 18  - 299.99  
+            < 18  - 149.99 
+            > 18  - 299.99  
         FLYG 
             1a    - 90000.0
             2a    - 699.99
         TÅG
-            1a    - 999.99
-            2a    - 195.99 
+            < 25  - 999.99
+            > 25  - 195.99 
     */
     
     
@@ -33,12 +33,12 @@ void main() {
     
 
     Bokning bok1 = new Bokning(k1, bussTest, 3);
-    Bokning bok2 = new Bokning(k4, flygTest, 0);
     Bokning bok3 = new Bokning(k2, bussTest, 5);
-    Bokning bok4 = new Bokning(k3, flygTest2, 13);
-    Bokning bok5 = new Bokning(k6, tågTest, 15);
+    Bokning bok4 = new Bokning(k3, flygTest2, 13, true);
+    Bokning bok2 = new Bokning(k4, flygTest, 0,false);
     Bokning bok6 = new Bokning(k5, bussTest, 2);
-    Bokning bok7 = new Bokning(k7, flygTest, 20);
+    Bokning bok5 = new Bokning(k6, tågTest, 15);
+    Bokning bok7 = new Bokning(k7, flygTest, 20,true);
     Bokning bok8 = new Bokning(k8, tågTest2, 1);
 
     bussTest.setPlats(0, true);
@@ -50,9 +50,9 @@ void main() {
     flygTest.setPlats(12, true);
     flygTest.setPlats(0, true);
 
-    //BokningSystem.Meny();
+    BokningSystem.Meny();
 
-    BokningSystem.visaPlatser(tågTest2);
+   /*  BokningSystem.visaPlatser(tågTest2);
     BokningSystem.visaPlatser(flygTest);
-    BokningSystem.visaPlatser(bussTest);
+    BokningSystem.visaPlatser(bussTest); */
 }

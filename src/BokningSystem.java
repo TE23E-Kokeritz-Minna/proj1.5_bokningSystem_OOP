@@ -13,7 +13,7 @@ public class BokningSystem {
                         ---- Meny: ----
                         1. Lägga till en passagerare - Välj Fordon
                         2. Leta Lediga platser - Välj Fordon
-                        3. Beräkna vinst - Total vinst och Separat Vinst  (TBC)
+                        3. Beräkna vinst - Total vinst och Separat Vinst
                         4. Hitta bokning - ange personnummer eller namn (TBC)
                         5. Radera bokning - ange personnummer eller namn (TBC)
                         6. Stäng meny
@@ -66,17 +66,16 @@ public class BokningSystem {
                     }
 
                     boolean förstaKlass = false;
-                    if(valtFordon instanceof Flyg){
-                        while(true){
+                    if (valtFordon instanceof Flyg) {
+                        while (true) {
                             try {
-                                förstaKlass = Boolean.parseBoolean( IO.readln("Förstaklass på flyget? (true/false)"));
+                                förstaKlass = Boolean.parseBoolean(IO.readln("Förstaklass på flyget? (true/false)"));
                                 break;
                             } catch (Exception e) {
                                 IO.println("FEL: " + e.getMessage());
                             }
                         }
                     }
-
 
                     Kund kund = new Kund(namn, personnummer);
                     new Bokning(kund, valtFordon, platsIndex, förstaKlass);
@@ -108,11 +107,13 @@ public class BokningSystem {
                         switch (svar.toLowerCase()) {
                             case "tot":
                                 for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
-                                    summa += bokning.getFordon().getPris(bokning);
+                                    summa += bokning.getPris();
 
-                                    IO.println("summa: " + summa + " Bokning Kund: " + bokning.getKund()
-                                            + " Bokning fordon: " + bokning.getFordon() + " Pris: "
-                                            + bokning.getFordon().getPris(bokning));
+                                    /*
+                                     * IO.println("summa: " + summa + " Bokning Kund: " + bokning.getKund()
+                                     * + " Bokning fordon: " + bokning.getFordon() + " Pris: "
+                                     * + bokning.getFordon().getPris(bokning));
+                                     */
                                 }
                                 summa = Math.floor(summa * 100) / 100;
                                 IO.println("Total vinsten är: " + summa + " kr");
@@ -121,9 +122,11 @@ public class BokningSystem {
                                 Fordon valtFordon3 = väljFordonsTyp();
                                 for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
                                     if (bokning.getFordon() == valtFordon3) {
-                                        summa += bokning.getFordon().getPris(bokning);
+                                        summa += bokning.getPris();
                                     }
                                 }
+                                summa = Math.floor(summa * 100) / 100;
+                                IO.println("Vinsten för " + valtFordon3 + " är: " + summa + " kr");
                                 break;
                             default:
                                 throw new IllegalArgumentException("Ogiltigt Alternativ");
@@ -131,16 +134,8 @@ public class BokningSystem {
                     } catch (Exception e) {
                         IO.println("FEL: " + e.getMessage());
                     }
-
-                    /*
-                     * double summa = 0;
-                     * for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
-                     * summa += bokning.getFordon().getPris(bokning);
-                     * }
-                     * IO.println("Total vinsten är: " + summa + " kr");
-                     */
-
                     break;
+
                 case 4:
                     // HITTA BOKNING
                     break;
