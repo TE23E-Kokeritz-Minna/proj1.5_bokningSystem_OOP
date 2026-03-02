@@ -15,7 +15,7 @@ public class BokningSystem {
                         2. Leta Lediga platser - Välj Fordon
                         3. Beräkna vinst - Total vinst och Separat Vinst
                         4. Hitta bokning - ange personnummer eller namn
-                        5. Radera bokning - ange personnummer eller namn (TBC)
+                        5. Radera bokning - ange personnummer eller namn
                         6. Stäng meny
                     """);
             while (true) {
@@ -141,23 +141,41 @@ public class BokningSystem {
 
                     IO.println("--- Hitta Bokning ---");
                     Boolean hittadeBokning = false;
-                    
-                    //Bokning söktBokning = new Bokning();
+
+                    // Bokning söktBokning = new Bokning();
                     String söktPnrNamn = IO.readln("Ange Personummer eller namn av den sökta bokningen: ").trim();
                     for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
                         if (bokning.getKund().getNamn().equalsIgnoreCase(söktPnrNamn)
-                                || bokning.getKund().getPersonummer().equalsIgnoreCase(söktPnrNamn)){
-                                IO.println(bokning);
-                                hittadeBokning = true;
-                                break;
-                                }
+                                || bokning.getKund().getPersonummer().equalsIgnoreCase(söktPnrNamn)) {
+                            IO.println(bokning);
+                            hittadeBokning = true;
+                            break;
+                        }
                     }
 
-                    if(!hittadeBokning) IO.println("Bokningen hittades inte");
-                  
+                    if (!hittadeBokning)
+                        IO.println("Bokningen hittades inte");
+
                     break;
                 case 5:
+                    IO.println("--- Hitta Bokning ---");
+                    hittadeBokning = false;
 
+                    // Bokning söktBokning = new Bokning();
+                    söktPnrNamn = IO.readln("Ange Personummer eller namn av den sökta bokningen: ").trim();
+                    for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
+                        if (bokning.getKund().getNamn().equalsIgnoreCase(söktPnrNamn)
+                                || bokning.getKund().getPersonummer().equalsIgnoreCase(söktPnrNamn)) {
+                            bokning.getFordon().setPlats(bokning.getPlatsIndex(), false);
+                            BokningsRegister.getAllaBokninger().remove(bokning);
+
+                            hittadeBokning = true;
+                            IO.println(bokning + " har raderats frå registret");
+                            break;
+                        }
+                    }
+                    if (!hittadeBokning)
+                        IO.println("Bokningen fanns inte");
                     // RADERA BOKNING
                     break;
                 case 6:
