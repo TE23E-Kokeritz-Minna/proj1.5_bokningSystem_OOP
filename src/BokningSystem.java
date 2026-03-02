@@ -65,8 +65,21 @@ public class BokningSystem {
                         }
                     }
 
+                    boolean förstaKlass = false;
+                    if(valtFordon instanceof Flyg){
+                        while(true){
+                            try {
+                                förstaKlass = Boolean.parseBoolean( IO.readln("Förstaklass på flyget? (true/false)"));
+                                break;
+                            } catch (Exception e) {
+                                IO.println("FEL: " + e.getMessage());
+                            }
+                        }
+                    }
+
+
                     Kund kund = new Kund(namn, personnummer);
-                    new Bokning(kund, valtFordon, platsIndex);
+                    new Bokning(kund, valtFordon, platsIndex, förstaKlass);
                     valtFordon.setPlats(platsIndex, true);
 
                     // TODOhantera om fordon inte finns
@@ -235,6 +248,7 @@ public class BokningSystem {
                         p3.replace(' ', '0'), p4.replace(' ', '0'), p5.replace(' ', '0'), p6.replace(' ', '0'));
             }
         } else if (fordon instanceof Tåg) {
+
             IO.println("Tåget: " + fordon.ID);
             IO.println("=========== K A B I N E R ===========");
             for (int row = 0; row < 6; row++) {
@@ -245,7 +259,7 @@ public class BokningSystem {
 
                 System.out.printf("\t[%s][%s]   [%s][%s]\n", p1.replace(' ', '0'), p2.replace(' ', '0'),
                         p3.replace(' ', '0'), p4.replace(' ', '0'));
-                if ((row -1) % 2 == 0 && row !=5) 
+                if ((row - 1) % 2 == 0 && row != 5)
                     IO.println();
             }
             IO.println("=====================================");
