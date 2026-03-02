@@ -19,6 +19,11 @@ public class Bokning {
             throw new IllegalArgumentException("Ogilitg bokning");
         BokningsRegister.läggTill(this);
     }
+/*     Bokning(){
+        kund = new Kund();
+        fordon = null;
+        platsIndex = -1;
+    } */
 
     Bokning(Kund kund, Fordon fordon, int platsIndex, boolean förstaKlass) {
         this.kund = kund;

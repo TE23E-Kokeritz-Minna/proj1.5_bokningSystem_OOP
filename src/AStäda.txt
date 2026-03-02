@@ -229,3 +229,8 @@ void main()
                      * }
                      * IO.println("Total vinsten är: " + summa + " kr");
                      */
+
+                      /*  if (söktBokning.getKund().getPersonummer() != "00000000")
+                        IO.println("sökt bokning : " + söktBokning);
+                    else
+                        IO.println("Bokning hittades inte"); */

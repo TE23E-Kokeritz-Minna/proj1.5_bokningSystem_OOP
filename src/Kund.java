@@ -13,7 +13,7 @@ public class Kund {
     Kund() {
         namn = "okänt";
         personummer = "00000000";
-        KundRegister.läggTill(this);
+        //KundRegister.läggTill(this);
     }
 
     Kund(String namn, String personummer) {

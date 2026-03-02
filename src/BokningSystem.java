@@ -14,7 +14,7 @@ public class BokningSystem {
                         1. Lägga till en passagerare - Välj Fordon
                         2. Leta Lediga platser - Välj Fordon
                         3. Beräkna vinst - Total vinst och Separat Vinst
-                        4. Hitta bokning - ange personnummer eller namn (TBC)
+                        4. Hitta bokning - ange personnummer eller namn
                         5. Radera bokning - ange personnummer eller namn (TBC)
                         6. Stäng meny
                     """);
@@ -138,8 +138,26 @@ public class BokningSystem {
 
                 case 4:
                     // HITTA BOKNING
+
+                    IO.println("--- Hitta Bokning ---");
+                    Boolean hittadeBokning = false;
+                    
+                    //Bokning söktBokning = new Bokning();
+                    String söktPnrNamn = IO.readln("Ange Personummer eller namn av den sökta bokningen: ").trim();
+                    for (Bokning bokning : BokningsRegister.getAllaBokninger()) {
+                        if (bokning.getKund().getNamn().equalsIgnoreCase(söktPnrNamn)
+                                || bokning.getKund().getPersonummer().equalsIgnoreCase(söktPnrNamn)){
+                                IO.println(bokning);
+                                hittadeBokning = true;
+                                break;
+                                }
+                    }
+
+                    if(!hittadeBokning) IO.println("Bokningen hittades inte");
+                  
                     break;
                 case 5:
+
                     // RADERA BOKNING
                     break;
                 case 6:
