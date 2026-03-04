@@ -1,20 +1,22 @@
 import java.util.ArrayList;
 
 public class KundRegister {
-    static private  ArrayList<Kund> allaKunder; 
-    
-    static{
-        allaKunder =  new ArrayList<>();
+    // Registret
+    static private ArrayList<Kund> allaKunder;
+
+    // skapar Listan i ett static block
+    static {
+        allaKunder = new ArrayList<>();
     }
-    
-    static public void läggTill(Kund kund){
+
+    // Metod för att lägga till Kunder
+    static public void läggTill(Kund kund) {
         allaKunder.add(kund);
         IO.println(kund + " har laggts till ");
-    } 
+    }
 
+    /* * * * * Getters * * * * */
     static public ArrayList<Kund> getAllaKunder() {
         return allaKunder;
     }
 }
-
-

@@ -1,15 +1,15 @@
 public class Bokning {
 
+    /* * * * * VARIBALER * * * * */
     private Kund kund;
     private int platsIndex;
     private Fordon fordon;
     private double pris;
 
-    // Finns egentlgen inte någon anledning att den finns
+    // för Tåg och Buss
+    // Eftersom det är garanterat att en Kund Fordon och platsIndex är giltiga när
+    // de en ny bokning skapas finns ingen anledning att kontrollera här också
     Bokning(Kund kund, Fordon fordon, int platsIndex) {
-        // kontrollera giltiga parametrar
-        // Hittas Kund och Fordon i resp Register
-        // existerar det platsindexet på det fordonet
         this.kund = kund;
         this.fordon = fordon;
         this.platsIndex = platsIndex;
@@ -19,12 +19,8 @@ public class Bokning {
             throw new IllegalArgumentException("Ogilitg bokning");
         BokningsRegister.läggTill(this);
     }
-/*     Bokning(){
-        kund = new Kund();
-        fordon = null;
-        platsIndex = -1;
-    } */
 
+    // för alla Fordon
     Bokning(Kund kund, Fordon fordon, int platsIndex, boolean förstaKlass) {
         this.kund = kund;
         this.fordon = fordon;
@@ -38,6 +34,8 @@ public class Bokning {
 
         BokningsRegister.läggTill(this);
     }
+
+    /* * * * * Getters * * * * */
 
     public Kund getKund() {
         return kund;
@@ -55,6 +53,7 @@ public class Bokning {
         return pris;
     }
 
+    /* * * * * To String  * * * * */
     @Override
     public String toString() {
         return kund + " " + fordon + " (" + (platsIndex + 1) + ")";

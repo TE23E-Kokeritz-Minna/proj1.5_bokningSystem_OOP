@@ -1,3 +1,8 @@
+// BokningSystemet är beroende på att fordon redan har skapats 
+
+
+
+
 Anteckningar
 
 public abstract class Fordon 
