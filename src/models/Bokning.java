@@ -1,3 +1,5 @@
+package models;
+import register.BokningsRegister;
 public class Bokning {
 
     /* * * * * VARIBALER * * * * */
@@ -9,7 +11,7 @@ public class Bokning {
     // för Tåg och Buss
     // Eftersom det är garanterat att en Kund Fordon och platsIndex är giltiga när
     // de en ny bokning skapas finns ingen anledning att kontrollera här också
-    Bokning(Kund kund, Fordon fordon, int platsIndex) {
+    public Bokning(Kund kund, Fordon fordon, int platsIndex) {
         this.kund = kund;
         this.fordon = fordon;
         this.platsIndex = platsIndex;
@@ -21,7 +23,7 @@ public class Bokning {
     }
 
     // för alla Fordon
-    Bokning(Kund kund, Fordon fordon, int platsIndex, boolean förstaKlass) {
+    public Bokning(Kund kund, Fordon fordon, int platsIndex, boolean förstaKlass) {
         this.kund = kund;
         this.fordon = fordon;
         this.platsIndex = platsIndex;

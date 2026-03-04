@@ -1,4 +1,7 @@
+package register;
 import java.util.ArrayList;
+
+import models.Fordon;
 
 public class FordonRegister {
 

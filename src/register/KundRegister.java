@@ -1,4 +1,7 @@
+package register;
 import java.util.ArrayList;
+
+import models.Kund;
 
 public class KundRegister {
     // Registret

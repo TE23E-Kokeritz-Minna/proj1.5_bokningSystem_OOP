@@ -1,7 +1,8 @@
+package models;
 public class Tåg extends Fordon {
 
     /* * * * * Konstruktor * * * * */
-    Tåg(String ID) {
+    public Tåg(String ID) {
         super(ID, 195.99, 999.99, 60);
     }
 

@@ -1,3 +1,6 @@
+package models;
+import register.FordonRegister;
+
 public abstract class Fordon {
 
     /* * * * * Variabler * * * * */
@@ -8,7 +11,7 @@ public abstract class Fordon {
     protected String[] platser;
 
     /* * * * * Konstruktor * * * * */
-    Fordon(String ID, double pris1, double pris2, int antalKunder) {
+    public Fordon(String ID, double pris1, double pris2, int antalKunder) {
         if (ID == null || ID.isBlank())
             throw new IllegalArgumentException("fordons ID får inte var tomt");
         if (pris1 < 0 || pris2 < 0)

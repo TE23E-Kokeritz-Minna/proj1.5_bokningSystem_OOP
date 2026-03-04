@@ -1,4 +1,7 @@
+package register;
 import java.util.ArrayList;
+
+import models.Bokning;
 
 public class BokningsRegister {
     

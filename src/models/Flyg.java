@@ -1,7 +1,8 @@
+package models;
 public class Flyg extends Fordon {
 
     /* * * * * Konstruktor * * * * */
-    Flyg(String ID) {
+    public Flyg(String ID) {
         super(ID, 699.99, 90000.0, 54);
     }
 

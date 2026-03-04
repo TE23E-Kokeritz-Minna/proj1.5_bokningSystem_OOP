@@ -1,6 +1,10 @@
+package system;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import models.*;
+import register.*;
 
 public class BokningSystem {
 
@@ -259,7 +263,7 @@ public class BokningSystem {
         } else {
             // Skriver ut listan
             for (int i = 0; i < alla.size(); i++) {
-                IO.println((i + 1) + ". " + alla.get(i).ID);
+                IO.println((i + 1) + ". " + alla.get(i).getID());
             }
 
             int fordonNr;
@@ -283,15 +287,15 @@ public class BokningSystem {
     // Metod för att visa alla platser på ett specifkt fordon.
     public static void visaPlatser(Fordon fordon) {
         if (fordon instanceof Buss) {
-            IO.println("Bussen: " + fordon.ID);
+            IO.println("Bussen: " + fordon.getID());
 
             for (int row = 0; row < 5; row++) {
                 // ↑ 5 rader
                 // ↓ de 4 platserna på rader ↓ 2 chars av ↓ denna array ↓ på denna plats
-                String p1 = String.format("%2s", fordon.platser[row * 4]);
-                String p2 = String.format("%2s", fordon.platser[row * 4 + 1]);
-                String p3 = String.format("%2s", fordon.platser[row * 4 + 2]);
-                String p4 = String.format("%2s", fordon.platser[row * 4 + 3]);
+                String p1 = String.format("%2s", fordon.getPlatser()[row * 4]);
+                String p2 = String.format("%2s", fordon.getPlatser()[row * 4 + 1]);
+                String p3 = String.format("%2s", fordon.getPlatser()[row * 4 + 2]);
+                String p4 = String.format("%2s", fordon.getPlatser()[row * 4 + 3]);
 
                 // Skriver ut hela raden
                 System.out.printf("\t[%s][%s]   [%s][%s]\n", p1.replace(' ', '0'), p2.replace(' ', '0'),
@@ -300,30 +304,30 @@ public class BokningSystem {
         }
 
         else if (fordon instanceof Flyg) {
-            IO.println("Flyget: " + fordon.ID);
+            IO.println("Flyget: " + fordon.getID());
 
             for (int row = 0; row < 9; row++) {
                 // 9 rader, 6 platser på varje rad
-                String p1 = String.format("%2s", fordon.platser[row * 6]);
-                String p2 = String.format("%2s", fordon.platser[row * 6 + 1]);
-                String p3 = String.format("%2s", fordon.platser[row * 6 + 2]);
-                String p4 = String.format("%2s", fordon.platser[row * 6 + 3]);
-                String p5 = String.format("%2s", fordon.platser[row * 6 + 4]);
-                String p6 = String.format("%2s", fordon.platser[row * 6 + 5]);
+                String p1 = String.format("%2s", fordon.getPlatser()[row * 6]);
+                String p2 = String.format("%2s", fordon.getPlatser()[row * 6 + 1]);
+                String p3 = String.format("%2s", fordon.getPlatser()[row * 6 + 2]);
+                String p4 = String.format("%2s", fordon.getPlatser()[row * 6 + 3]);
+                String p5 = String.format("%2s", fordon.getPlatser()[row * 6 + 4]);
+                String p6 = String.format("%2s", fordon.getPlatser()[row * 6 + 5]);
 
                 System.out.printf("\t[%s][%s][%s]   [%s][%s][%s]\n", p1.replace(' ', '0'), p2.replace(' ', '0'),
                         p3.replace(' ', '0'), p4.replace(' ', '0'), p5.replace(' ', '0'), p6.replace(' ', '0'));
             }
         } else if (fordon instanceof Tåg) {
-            IO.println("Tåget: " + fordon.ID);
+            IO.println("Tåget: " + fordon.getID());
 
             // första sektionen med 6 rader 4 platser var
             IO.println("=========== K A B I N E R ===========");
             for (int row = 0; row < 6; row++) {
-                String p1 = String.format("%2s", fordon.platser[row * 4]);
-                String p2 = String.format("%2s", fordon.platser[row * 4 + 1]);
-                String p3 = String.format("%2s", fordon.platser[row * 4 + 2]);
-                String p4 = String.format("%2s", fordon.platser[row * 4 + 3]);
+                String p1 = String.format("%2s", fordon.getPlatser()[row * 4]);
+                String p2 = String.format("%2s", fordon.getPlatser()[row * 4 + 1]);
+                String p3 = String.format("%2s", fordon.getPlatser()[row * 4 + 2]);
+                String p4 = String.format("%2s", fordon.getPlatser()[row * 4 + 3]);
 
                 System.out.printf("\t[%s][%s]   [%s][%s]\n", p1.replace(' ', '0'), p2.replace(' ', '0'),
                         p3.replace(' ', '0'), p4.replace(' ', '0'));
@@ -337,10 +341,10 @@ public class BokningSystem {
             // andra sektionen med billigare
             for (int row = 6; row < 15; row++) {
                 // 9 rader 4 paltser var
-                String p1 = String.format("%2s", fordon.platser[row * 4]);
-                String p2 = String.format("%2s", fordon.platser[row * 4 + 1]);
-                String p3 = String.format("%2s", fordon.platser[row * 4 + 2]);
-                String p4 = String.format("%2s", fordon.platser[row * 4 + 3]);
+                String p1 = String.format("%2s", fordon.getPlatser()[row * 4]);
+                String p2 = String.format("%2s", fordon.getPlatser()[row * 4 + 1]);
+                String p3 = String.format("%2s", fordon.getPlatser()[row * 4 + 2]);
+                String p4 = String.format("%2s", fordon.getPlatser()[row * 4 + 3]);
 
                 System.out.printf("\t[%s][%s]   [%s][%s]\n", p1.replace(' ', '0'), p2.replace(' ', '0'),
                         p3.replace(' ', '0'), p4.replace(' ', '0'));

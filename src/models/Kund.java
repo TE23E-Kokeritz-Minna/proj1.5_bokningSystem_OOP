@@ -1,5 +1,8 @@
+package models;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+import register.KundRegister;
 
 public class Kund {
 
@@ -10,12 +13,12 @@ public class Kund {
 
     /* * * * * Konstruktor * * * * */
 
-    Kund() {
+    public Kund() {
         namn = "okänt";
         personummer = "00000000";
     }
 
-    Kund(String namn, String personummer) {
+    public Kund(String namn, String personummer) {
         // Kontrollen används tekniskt sätt aldrig
         try {
             LocalDate.parse(personummer, DateTimeFormatter.BASIC_ISO_DATE);

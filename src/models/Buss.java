@@ -1,10 +1,11 @@
+package models;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Buss extends Fordon {
 
     /* * * * * Konstruktor * * * * */
-    Buss(String ID) {
+    public Buss(String ID) {
         super(ID, 149.99, 299.99, 20);
     }
 
