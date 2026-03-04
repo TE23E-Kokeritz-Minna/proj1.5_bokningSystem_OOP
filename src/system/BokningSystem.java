@@ -270,7 +270,7 @@ public class BokningSystem {
             // får giltigt fordons
             while (true) {
                 try {
-                    fordonNr = Integer.parseInt(IO.readln("Välj Fordon nr: "));
+                    fordonNr = Integer.parseInt(IO.readln("Välj Fordon nr: ").trim());
                     if (fordonNr < 1 || fordonNr - 1 >= alla.size())
                         throw new IndexOutOfBoundsException("Ogiltigt Index");
                     else
